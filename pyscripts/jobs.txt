@@ -1,0 +1,220 @@
+Accounting Assistant
+Adr Recordist
+Aerial Specialist
+Agents Assistant
+Anchor
+Animal Trainer
+Animator
+Animator With Live Action
+Art Dept Coordinator
+Art Dept Leadman
+Art Dept Swing
+Art Director
+Assistant Director 1st
+Assistant Director 2nd 2nd
+Assistant Director 2nd
+Assistant Script Supervisor Coordinator
+Assistant Stereographer
+Assistant To Producer
+Associate Producer
+Attorney
+Audio Recordist
+Audio Visual Technician
+Autocue Operator
+Best Boy
+Boom Operator
+Broadcast Engineer
+Cable Puller
+Camera Assistant 1st
+Camera Assistant 2nd
+Camera Operator
+Casting Associate
+Casting Coordinator
+Casting Director Assistant
+Casting Director Agent
+Casting Recruiter
+Caterer
+Celebrity Booker
+Colorist
+Composer
+Compositor
+Computer Effects
+Concept Artist
+Construction Coordinator
+Consulting Producer
+Costume Designer
+Costumers
+Costumes Wardrobe
+Craft Service
+Creature Designer
+Development Executive
+Dialect Coach
+Digital Imaging Technician
+Director
+Director Producer
+Director Of Photography Cinematographer
+Director Of Programming
+Directors Assistant
+Director Commercials
+Director Feature Film
+Director Music Video
+Distributor
+Dolly Grip
+Dubbing Mixer
+Dvd Blue Ray Author
+Editor
+Editor Assistant
+Electrician
+Executive Assistant
+Executive Producer
+Field Director
+Field Producer
+Fixer
+Foley Artist
+Food Stylist
+Funder-Investment
+Funder-Grants
+Funder-Government
+Gaffer
+Government-Municipal
+Government-Provincial
+Government-Federal
+Grant Writer
+Graphic Titles Designer
+Graphics Operator
+Grip
+Hair Stylist
+Intern
+Jimmy Jib Operator
+Key Grip
+Lighting Design
+Lighting Supervisor
+Lighting Technical Director
+Line Producer
+Loader
+Location Manager
+Location Scout
+Makeup Artist
+Marine Specialist
+Marketing Assistant
+Marketing Executive
+Master Control Operator
+Matte Painter
+Mechanical Effects
+Motion Graphics Capture Artist
+Multi Camera Director
+Music Editor
+Music Supervisor
+Music Truck A2
+Musical Arranger
+News Director
+News Editor
+News Producer
+Nurses And Medics
+On Location Massage
+Pa Office
+Pa Set
+Paralegal
+Personal Assistant
+Picture Editor
+Post Producer
+Post Production Coordinator
+Post Production Supervisor
+Pr Assistant
+Pr Executive
+Preditor
+Producer
+Production Accountant
+Production Assistant
+Production Coordinator
+Production Designer
+Production Executive
+Production Manager
+Production Secretary
+Production Sound Mixer
+Production Supervisor
+Project Manager
+Promotions Producer
+Prop Maker
+Prop Master
+Public Relations Specialist
+Re Recording Mixer
+Receptionist
+Reporter
+Researcher
+Rigging Electric
+Rigging Grip
+Rights Clearances
+Rotoscope Artist
+Runner
+Sales Agent
+Sales Assistant
+Sales Executive
+Satellite Truck Operator
+Script Supervisor
+Second Unit Director
+Segment Producer
+Series Producer
+Set Construction
+Set Decorator
+Set Painting Scenic
+Show Runner
+Sign Writer
+Social Media Specialist
+Sound Assistant
+Sound Designer
+Sound Editor
+Sound Engineer
+Sound Recordist
+Special Effects
+Special Effects Editor
+Stage Manager
+Steadicam Operator
+Stereographer
+Still Photographer
+Story Assistant
+Story Editor
+Story Producer
+Storyboard Artist
+Student-Film
+Student-Acting
+Student-Artist
+Student-Design
+Studio Videographer
+Stunt Coordinator
+Stunt Driver
+Supervising Producer
+Talent Booker
+Tape Logger
+Technical Director
+Teleprompting
+Television Director
+Television Producer
+Television Writer
+Traffic Assistant
+Transcriptionist
+Translator
+Transportation
+Travel Coordinator
+Unit Manager
+Unit Publicist
+Utility Assistant
+Vfx Coordinator
+Vfx Supervisor
+Video Editor
+Video Engineer
+Video Playback
+Video Tape Operator
+Videographer Efp
+Videographer Eng
+Visual Effects
+Voiceover Artist
+Vp Of Programming
+Wardrobe Assistant
+Wardrobe Stylist
+Web Designer
+Web Developer
+Webcaster
+Writer
+Writer-Grant Writer
+Writers Assistant
