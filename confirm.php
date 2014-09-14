@@ -4,6 +4,7 @@
 	the database to find the user with the same code. If query returns a value then the
 	'confirmed' field of the database is set to true.
 */
+
 include "includes/dbconnect.php";
 
 $hash = $_GET['h']; //get the verify code which is embedded in the URL

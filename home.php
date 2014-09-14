@@ -17,8 +17,8 @@ if(!$confirmed){
 
 	<body>
 
-		<!--Navigation Bar-->
 		<?php
+		//Navigavtion Bar
 		include "includes/navbar.php";
 		$info = getInfo($_SESSION['id']); //get the user's profile information and store it in an array
 		$talents = getTalents($_SESSION['id']);
