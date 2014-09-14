@@ -99,4 +99,18 @@ function search($searchName){
 
 	return $ids;
 }
+
+/*
+* Objective: Determine whether or not the submitted talent areas are valid
+* Input: An array containing the submitted talents, as well as an array containing the valid ones
+* Output: A boolean indicating whether all of the submitted talents are valid
+*/
+function validTalents($submitted, $valid){
+	foreach($submitted as $talent){
+		if(!in_array($talent, $valid)){
+			return false;
+		}
+	}
+	return true;
+}
 ?>
