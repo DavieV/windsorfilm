@@ -86,22 +86,6 @@ class User{
 		return strlen($this->video)>0;
 	}
 
-	function bioLength(){
-		if($this->membership==1) return 500;
-		if($this->membership==2) return 1500;
-		if($this->membership==3) return 3000;
-
-		return 0;
-	}
-
-	function numTalents(){
-		if($this->membership==1) return 3;
-		if($this->membership==2) return 5;
-		if($this->membership==3) return 7;
-
-		return 0;
-	}
-
 }
 
 

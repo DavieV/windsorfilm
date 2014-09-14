@@ -1,8 +1,5 @@
 <?php
 //Updates the database with the user's profile information after they fill out the form
-session_start();
-
-include "includes/dbconnect.php";
 include "includes/functions.php";
 
 $membership = getMembership($_SESSION['id']);

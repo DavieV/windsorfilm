@@ -1,17 +1,4 @@
-<?php 
-//session_start();
-//include "includes/functions.php";
-
-//$currentUser=currentUser();
-
-if(!$currentUser->isConfirmed()){
-	header("location: reconfirm.php");
-	die();
-}
-?>
-
 <!DOCTYPE html>
-
 <html>
 	
 	<?php
