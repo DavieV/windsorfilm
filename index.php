@@ -5,6 +5,7 @@
 <html>
 	<?php
 	include "includes/mainhead.html";
+	include "includes/functions.php";
 	?>
 
 	<body>

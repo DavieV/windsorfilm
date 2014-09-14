@@ -11,8 +11,9 @@
 
 		<!--Navigation Bar-->
 		<?php
-		include "includes/navbar.php";
 		include "includes/functions.php";
+		include "includes/navbar.php";
+		
 		$name = $_POST['name'];
 		$ids = search($name);
 		?>

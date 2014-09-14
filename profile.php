@@ -13,7 +13,8 @@ session_start();
 	<body>
 
 		<?php
-		//Navigavtion Bar	
+		//Navigavtion Bar
+		include "includes/functions.php";
 		include "includes/navbar.php";
 		$info = getInfo($_GET['id']); //use the id in the URL rather than a session variable
 		$talents = getTalents($_GET['id']);

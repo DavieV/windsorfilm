@@ -2,34 +2,22 @@
 
 include "dbconnect.php";
 
-/*
-Objective: Return an array containing all of the users contact information
-Input: The id which is used to query the database
-Output: An array containing the user's contact information
-*/
-function getInfo($id){
-	global $mysqli;
-	if($stmt=$mysqli->prepare("SELECT firstname, lastname, phone, businessphone, email, image, video, bio FROM test WHERE id=?")){
-		$stmt->bind_param("d", $id);
-		$stmt->bind_result($firstname, $lastname, $phone, $businessphone, $email, $image, $video, $bio);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->close();
-	}
-	return array($firstname, $lastname, $phone, $businessphone, $email, $image, $video, $bio);
+
+
+function __autoload($class_name){
+	include "classes/".$class_name.".php";
 }
 
-function getName($id){
-	global $mysqli;
-	if($stmt=$mysqli->prepare("SELECT firstname, lastname FROM test WHERE id=?")){
-		$stmt->bind_param("d", $id);
-		$stmt->bind_result($firstname, $lastname);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->close();
-	}
-	return $firstname . " " . $lastname;
+function currentUser(){
+	if(isLogged())
+		return new User($_SESSION['id']);
 }
+
+
+function isLogged(){
+	return isset($_SESSION['id']);
+}
+
 
 /*
 Objective: Query the database and gather the talent areas of a particular user
@@ -50,23 +38,6 @@ function getTalents($id){
 		$tmp[$i] = htmlspecialchars($tmp[$i]);
 	}
 	return $tmp;
-}
-
-/*
-Objective: Determine whether or not a particular user has confirmed their email address
-Input: The id which is used in order to query the database
-Output: A boolean representing whether or not the user's email address has been confirmed
-*/
-function getConfirmed($id){
-	global $mysqli;
-	if($stmt=$mysqli->prepare("SELECT confirmed FROM test WHERE id=?")){
-		$stmt->bind_param("d", $id);
-		$stmt->bind_result($confirmed);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->close();
-	}
-	return $confirmed;
 }
 
 function getMembership($id){

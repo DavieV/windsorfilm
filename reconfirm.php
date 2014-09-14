@@ -1,8 +1,9 @@
 <?php 
 session_start();
-include "includes/functions.php";
+
 if(!isset($_SESSION['id'])){
 	header("location: index.php");
+	die();
 }	
 ?>
 
