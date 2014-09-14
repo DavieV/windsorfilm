@@ -15,7 +15,7 @@
 		<div class="jumbotron">
 			<div class="container">
 				<?php if($currentUser->hasImage()): ?>
-				<img src="<?php echo $currentUser->image; ?>" height='80%' width='15%' class='float-left'>
+					<?php $currentUser->showImage("15%","80%"); ?>
 				<?php endif; ?>
 				<h1><?php echo $currentUser->name; ?></h1>
 			</div>

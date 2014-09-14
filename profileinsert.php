@@ -2,10 +2,10 @@
 //Updates the database with the user's profile information after they fill out the form
 include "includes/functions.php";
 
-$membership = getMembership($_SESSION['id']);
+$currentUser=currentUser();
 
-$firstname = htmlspecialchars($_POST['firstname']);
-$lastname = htmlspecialchars($_POST['lastname']);
+$membership = $currentUser->membership;
+
 //profile image
 //have to strip punctuation from the string
 $phone = htmlspecialchars($_POST['phone']);
@@ -26,6 +26,10 @@ if(strlen($_POST['bio'])){
 	$bio = htmlspecialchars($_POST['bio']);
 }
 
+
+
+var_dump($_POST);
+
 if($membership == 1){
 	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, bio=?, talent1=?, talent2=?, talent3=? WHERE id=?")){
 		$stmt->bind_param("ssssssd", $phone, $businessphone, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_SESSION['id']);
@@ -36,7 +40,7 @@ if($membership == 1){
 }
 
 else if($membership == 2){
-	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=? WHERE username=?")){
+	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=? WHERE id=?")){
 		$stmt->bind_param("sssssssssd", $phone, $businessphone, $image, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_POST['talent4'], $_POST['talent5'], $_SESSION['id']);
 		$stmt->execute();
 		$stmt->close();
@@ -45,10 +49,14 @@ else if($membership == 2){
 }
 
 else if($membership == 3){
-	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, video=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=?, talent6=?, talent7=? WHERE username=?")){
+	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, video=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=?, talent6=?, talent7=? WHERE id=?")){
 		$stmt->bind_param("ssssssssssssd", $phone, $businessphone, $image, $video, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_POST['talent4'], $_POST['talent5'], $_POST['talent6'], $_POST['talent7'], $_SESSION['id']);
 		$stmt->execute();
 		$stmt->close();
 	}
-	header("location: index.php");
+	else{
+		echo $mysqli->error;
+	}
+
+	header("location: home.php");
 }

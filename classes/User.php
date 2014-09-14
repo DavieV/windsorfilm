@@ -102,6 +102,10 @@ class User{
 		return 0;
 	}
 
+	function showImage($width="200",$height="200",$class=""){
+		echo '<img class="'.$class.'" src="'.$this->image.'" width="'.$width.'" height="'.$height.'">';
+	}
+
 }
 
 
