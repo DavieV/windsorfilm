@@ -40,4 +40,27 @@ function search($searchName){
 
 	return $users;
 }
+
+
+
+
+/*
+* Objective: Determine whether or not the submitted talent areas are valid
+* Input: An array containing the submitted talents, as well as an array containing the valid ones
+* Output: A boolean indicating whether all of the submitted talents are valid
+*/
+function validTalents($submitted){
+
+	$jobString = file_get_contents("pyscripts/jobs.txt");	/* Read in a list of viable talent values from text file */
+	$jobsArray = explode("\n", $jobString);					/* Separate each job value into an array */
+	
+	foreach($submitted as $talent){
+		if(!in_array($talent, $jobsArray)){
+			return false;
+		}
+	}
+	return true;
+}
+
+
 ?>

@@ -1,4 +1,15 @@
 <?php
+
+/*
+
+	TODO:
+	Clean this file up
+
+
+*/
+
+
+
 //Updates the database with the user's profile information after they fill out the form
 include "includes/functions.php";
 
@@ -24,6 +35,18 @@ if(isset($_POST['image'])){
 
 if(strlen($_POST['bio'])){
 	$bio = htmlspecialchars($_POST['bio']);
+}
+
+
+
+$submittedTalents=array();
+
+for($i=1;$i<=$currentUser->numTalents();$i++) //build an array of the submitted talents
+	$submittedTalents[]=$_POST['talent'.$i];  //will be checked against valid talents to prevent value editing
+
+if(!validTalents($submittedTalents)){
+	header("location: profileform.php");
+	die();
 }
 
 
