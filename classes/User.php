@@ -38,7 +38,7 @@ class User{
 
 		if($stmt=$mysqli->prepare("SELECT id,email,confirmed,membership,firstname,lastname,phone,businessphone,image,video,bio FROM test WHERE id=?")){
 			$stmt->bind_param("d",$this->id);
-			$stmt->bind_result($this->id,$this->email,$this->confirmed,$this->membership,$this->firstname,$this->lastname,$this->phone,$this->businessphone,$this->image,$this->video,$this->bio);
+			$stmt->bind_result($this->id,$this->email,$this->confirmed,$this->membership,$this->firstname,$this->lastname,$this->phone,$this->bphone,$this->image,$this->video,$this->bio);
 			$stmt->execute();
 			$stmt->fetch();
 			$stmt->close();

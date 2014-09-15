@@ -64,7 +64,7 @@ if(!$currentUser->isConfirmed()){
 				<?php endfor; ?>
 
 				<?php if($currentUser->membership == 3): ?>
-				<input type='text' class='form-control' name='video' placeholder='Youtube Video Address'>
+				<input type='text' class='form-control' name='video' placeholder='Youtube Video Address' value="<?php echo $currentUser->video; ?>">
 				<?php endif; ?>
 
 				<button class="btn btn-large btn-primary btn-block" type="submit">Submit</button>

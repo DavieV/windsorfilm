@@ -27,9 +27,6 @@ if(strlen($_POST['bio'])){
 }
 
 
-
-var_dump($_POST);
-
 if($membership == 1){
 	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, bio=?, talent1=?, talent2=?, talent3=? WHERE id=?")){
 		$stmt->bind_param("ssssssd", $phone, $businessphone, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_SESSION['id']);
@@ -57,6 +54,7 @@ else if($membership == 3){
 	else{
 		echo $mysqli->error;
 	}
-
 	header("location: home.php");
 }
+
+?>
