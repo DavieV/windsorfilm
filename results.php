@@ -1,5 +1,4 @@
-<?php session_start(); ?>
-
+<?php include "includes/functions.php"; ?>
 <!DOCTYPE html>
 
 <html>
@@ -12,22 +11,23 @@
 		<!--Navigation Bar-->
 		<?php
 		include "includes/navbar.php";
-		include "includes/functions.php";
+		
 		$name = $_POST['name'];
-		$ids = search($name);
+		$users = search($name);
 		?>
 
 		<div class="container">
 
-			<?php
-			foreach($ids as $id){
-			?>
+			<?php foreach($users as $user): ?>
 
-			<p><a href="profile.php?id=<?php echo $id; ?>"><?php echo getName($id); ?></a></p>
+			<p>
+				<?php if($user->hasImage()): ?>
+					<?php $user->showImage(); ?>
+				<?php endif; ?>
+				<a href="profile.php?id=<?php echo $user->id; ?>"><?php echo $user->name; ?></a>
+			</p>
 
-			<?php
-			}
-			?>
+			<?php endforeach; ?>
 			
 		</div>
 

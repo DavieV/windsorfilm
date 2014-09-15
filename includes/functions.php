@@ -1,94 +1,32 @@
 <?php
-
+session_start();
 include "dbconnect.php";
 
-/*
-Objective: Return an array containing all of the users contact information
-Input: The id which is used to query the database
-Output: An array containing the user's contact information
-*/
-function getInfo($id){
-	global $mysqli;
-	if($stmt=$mysqli->prepare("SELECT firstname, lastname, phone, businessphone, email, image, video, bio FROM test WHERE id=?")){
-		$stmt->bind_param("d", $id);
-		$stmt->bind_result($firstname, $lastname, $phone, $businessphone, $email, $image, $video, $bio);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->close();
-	}
-	return array($firstname, $lastname, $phone, $businessphone, $email, $image, $video, $bio);
+
+
+function __autoload($class_name){
+	include "classes/".$class_name.".php";
 }
 
-function getName($id){
-	global $mysqli;
-	if($stmt=$mysqli->prepare("SELECT firstname, lastname FROM test WHERE id=?")){
-		$stmt->bind_param("d", $id);
-		$stmt->bind_result($firstname, $lastname);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->close();
-	}
-	return $firstname . " " . $lastname;
+function currentUser(){
+	if(isLogged())
+		return new User($_SESSION['id']);
 }
 
-/*
-Objective: Query the database and gather the talent areas of a particular user
-Input: The id which is used to query the database
-Output: An array containing all of the user's talent areas
-*/
-function getTalents($id){
-	global $mysqli;
-	if($stmt=$mysqli->prepare("SELECT talent1, talent2, talent3, talent4, talent5, talent6, talent7 FROM test WHERE id=?")){
-		$stmt->bind_param("d", $id);
-		$stmt->bind_result($talent1, $talent2, $talent3, $talent4, $talent5, $talent6, $talent7);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->close();
-	}
-	$tmp=array($talent1, $talent2, $talent3, $talent4, $talent5, $talent6, $talent7);
-	for($i = 0; $i < count($tmp); $i++){
-		$tmp[$i] = htmlspecialchars($tmp[$i]);
-	}
-	return $tmp;
-}
 
-/*
-Objective: Determine whether or not a particular user has confirmed their email address
-Input: The id which is used in order to query the database
-Output: A boolean representing whether or not the user's email address has been confirmed
-*/
-function getConfirmed($id){
-	global $mysqli;
-	if($stmt=$mysqli->prepare("SELECT confirmed FROM test WHERE id=?")){
-		$stmt->bind_param("d", $id);
-		$stmt->bind_result($confirmed);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->close();
-	}
-	return $confirmed;
-}
-
-function getMembership($id){
-	global $mysqli;
-	if($stmt=$mysqli->prepare("SELECT membership FROM test WHERE id=?")){
-		$stmt->bind_param("d", $id);
-		$stmt->bind_result($membership);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->close();
-	}
-	return $membership;
+function isLogged(){
+	return isset($_SESSION['id']);
 }
 
 function search($searchName){
 	global $mysqli;
 
 	$ids = array();
+	$users=array();
 
-	if($stmt=$mysqli->prepare("SELECT id, firstname, lastname FROM test WHERE UPPER(firstname) = UPPER(?)")){
+	if($stmt=$mysqli->prepare("SELECT id FROM test WHERE UPPER(firstname) = UPPER(?)")){
 		$stmt->bind_param("s", $searchName);
-		$stmt->bind_result($id, $first, $last);
+		$stmt->bind_result($id);
 		$stmt->execute();
 		while($stmt->fetch()){
 			$ids[] = $id;
@@ -97,7 +35,10 @@ function search($searchName){
 		$stmt->close();
 	}
 
-	return $ids;
+	foreach($ids as $id)
+		$users[]=new User($id);
+
+	return $users;
 }
 
 /*
@@ -105,12 +46,18 @@ function search($searchName){
 * Input: An array containing the submitted talents, as well as an array containing the valid ones
 * Output: A boolean indicating whether all of the submitted talents are valid
 */
-function validTalents($submitted, $valid){
+function validTalents($submitted){
+
+	$jobString = file_get_contents("pyscripts/jobs.txt");	/* Read in a list of viable talent values from text file */
+	$jobsArray = explode("\n", $jobString);					/* Separate each job value into an array */
+	
 	foreach($submitted as $talent){
-		if(!in_array($talent, $valid)){
+		if(!in_array($talent, $jobsArray)){
 			return false;
 		}
 	}
 	return true;
 }
+
+
 ?>

@@ -1,22 +1,24 @@
 <?php
-//Updates the database with the user's profile information after they fill out the form
-session_start();
-
-include "includes/dbconnect.php";
-include "includes/functions.php";
-
-$id = $_SESSION['id'];
-
-$jobString = file_get_contents("pyscripts/jobs.txt");	/* Read in a list of viable talent values from text file */
-$jobsArray = explode("\n", $jobString);					/* Separate each job value into an array */
-$membership = getMembership($id);						/* int representing what account membership the user has */
-
-$phone = htmlspecialchars($_POST['phone']);
 
 /*
-* The following variables are all optional parts of the profile form, so they are only assigned
-* if the user has actually submitted the information
+
+	TODO:
+	Clean this file up
+
+
 */
+
+//Updates the database with the user's profile information after they fill out the form
+include "includes/functions.php";
+
+$currentUser=currentUser();
+
+$membership = $currentUser->membership;
+
+//profile image
+//have to strip punctuation from the string
+$phone = htmlspecialchars($_POST['phone']);
+
 if(isset($_POST['businessphone'])){
 	$businessphone = htmlspecialchars($_POST['businessphone']);
 }
@@ -33,41 +35,44 @@ if(strlen($_POST['bio'])){
 	$bio = htmlspecialchars($_POST['bio']);
 }
 
+$submittedTalents=array();
+
+for($i=1;$i<=$currentUser->numTalents();$i++) //build an array of the submitted talents
+	$submittedTalents[]=$_POST['talent'.$i];  //will be checked against valid talents to prevent value editing
+
+if(!validTalents($submittedTalents)){
+	header("location: profileform.php");
+	die();
+}
+
 if($membership == 1){
-	$talents = array($_POST['talent1'], $_POST['talent2'], $_POST['talent3']);
-	if(validTalents($talents, $jobsArray)){
-		if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, bio=?, talent1=?, talent2=?, talent3=? WHERE id=?")){
-			$stmt->bind_param("ssssssd", $phone, $businessphone, $bio, $talents[0], $talents[1], $talents[2], $id);
-			$stmt->execute();
-			$stmt->close();
-		}
-		header("location: index.php");
+	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, bio=?, talent1=?, talent2=?, talent3=? WHERE id=?")){
+		$stmt->bind_param("ssssssd", $phone, $businessphone, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_SESSION['id']);
+		$stmt->execute();
+		$stmt->close();
 	}
-	echo "you goofed";
+	header("location: index.php");
 }
 
 else if($membership == 2){
-	$talents = array($_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_POST['talent4'], $_POST['talent5']);
-	if(validTalents($talents, $jobsArray)){
-		if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=? WHERE id=?")){
-			$stmt->bind_param("sssssssssd", $phone, $businessphone, $image, $bio, $talents[0], $talents[1], $talents[2], $talents[3], $talents[4], $id);
-			$stmt->execute();
-			$stmt->close();
-		}
-		header("location: index.php");
+	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=? WHERE id=?")){
+		$stmt->bind_param("sssssssssd", $phone, $businessphone, $image, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_POST['talent4'], $_POST['talent5'], $_SESSION['id']);
+		$stmt->execute();
+		$stmt->close();
 	}
-	echo "you goofed";
+	header("location: index.php");
 }
 
 else if($membership == 3){
-	$talents = array($_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_POST['talent4'], $_POST['talent5'], $_POST['talent6'], $_POST['talent7']);
-	if(validTalents($talents, $jobsArray)){
-		if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, video=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=?, talent6=?, talent7=? WHERE id=?")){
-			$stmt->bind_param("ssssssssssssd", $phone, $businessphone, $image, $video, $bio, $talents[0], $talents[1], $talents[2], $talents[3], $talents[4], $talents[5], $talents[6], $id);
-			$stmt->execute();
-			$stmt->close();
-		}
-		header("location: index.php");
+	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, video=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=?, talent6=?, talent7=? WHERE id=?")){
+		$stmt->bind_param("ssssssssssssd", $phone, $businessphone, $image, $video, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_POST['talent4'], $_POST['talent5'], $_POST['talent6'], $_POST['talent7'], $_SESSION['id']);
+		$stmt->execute();
+		$stmt->close();
 	}
-	echo "you goofed";
+	else{
+		echo $mysqli->error;
+	}
+	header("location: home.php");
 }
+
+?>

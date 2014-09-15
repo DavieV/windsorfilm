@@ -1,8 +1,9 @@
 <?php 
-session_start();
 include "includes/functions.php";
+
 if(!isset($_SESSION['id'])){
 	header("location: index.php");
+	die();
 }	
 ?>
 
@@ -12,7 +13,6 @@ if(!isset($_SESSION['id'])){
 	
 	<?php
 	include "includes/mainhead.html";
-	include "includes/functions.php";
 	?>
 
 	<body>

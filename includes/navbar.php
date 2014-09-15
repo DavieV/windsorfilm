@@ -5,8 +5,6 @@ Checks if the user is logged in or not, displaying appropriate buttons
 based on the their login status. Includes modals for signing in and
 searching the database.
 */
-session_start();
-include "includes/functions.php";
 ?>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -27,10 +25,7 @@ include "includes/functions.php";
 
 		<div class="navbar-collapse collapse">
 			<div class="navbar-right">
-				<?php
-				$name = getName($_SESSION['id']);
-				echo "<span class='navtext'>Welcome " . $name . "!</span>";
-				?> 
+				<span class='navtext'>Welcome <?php echo currentUser()->name; ?>!</span>
 				<a href="home.php"><button class="btn btn-primary">My Profile</button></a>
 				<a href="logout.php"><button class="btn btn-primary">Logout</button></a>
 				<button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
