@@ -39,6 +39,11 @@ if(isset($_POST['image'])){
 
 if(strlen($_POST['bio'])>0){
 	$bio = htmlspecialchars($_POST['bio']);
+
+	if(strlen($bio)>$currentUser->bioLength()){
+		header("location: profileform.php");
+		die();
+	}
 }
 
 

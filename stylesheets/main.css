@@ -5,8 +5,10 @@ body {
 }
 .jumbotron {
 	background-color: #3399ff;
-	background-image: url("http://www.blog.jaychan.net/wp-content/uploads/2011/04/Chrono-Trigger-Kingdom-of-Zeal.jpg");
-	background-position: center;
+	/*background-image: url("http://www.blog.jaychan.net/wp-content/uploads/2011/04/Chrono-Trigger-Kingdom-of-Zeal.jpg");*/
+  background-image:url(jumbo.png);
+  background-size: cover;
+	/*background-position: center;*/
 }
 .jumbotron h1 {
 	color: white;

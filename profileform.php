@@ -30,9 +30,9 @@ if(!$currentUser->isConfirmed()){
 				<br /><br />
 
 				Input a short bio, <input readonly type="text" id='length' name="length" size="4" maxlength="4" value=<?php echo "'" . $char . "'"?>> characters left<br/>
-				<textarea placeholder="Bio" onKeyDown=<?php echo '"textCounter(this,' . $char . ');"'?> onKeyUp=<?php echo '"textCounter(this,' . "'length'," . $char . ')"'?> name="bio" id="bio" rows="5" cols="34">
-					<?php echo $currentUser->bio; ?>
-				</textarea>
+
+				<!-- dont space this out, it will cause unwanted white space in the text area -->
+				<textarea placeholder="Bio" onKeyDown=<?php echo '"textCounter(this,' . $char . ');"'?> onKeyUp=<?php echo '"textCounter(this,' . "'length'," . $char . ')"'?> name="bio" id="bio" rows="5" cols="34"><?php echo $currentUser->bio; ?></textarea>
 
 				<script>
 				function textCounter(field, cnt, maxlimit) {         

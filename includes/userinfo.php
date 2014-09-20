@@ -11,13 +11,17 @@
 		//Navigavtion Bar
 		include "includes/navbar.php";
 		?>
+		<link rel="stylesheet" href="stylesheets/profile.css">
 
 		<div class="jumbotron">
 			<div class="container">
 				<?php if($currentUser->hasImage()): ?>
 					<?php $currentUser->showImage("15%","80%"); ?>
 				<?php endif; ?>
-				<h1><?php echo $currentUser->name; ?></h1>
+				<br /><br />
+				<span class="heading">
+					<h1><?php echo $currentUser->name; ?></h1>
+				</span>
 			</div>
 		 </div>
 
