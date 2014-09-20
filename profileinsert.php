@@ -29,11 +29,17 @@ if(isset($_POST['video'])){
 
 if(isset($_POST['image'])){
 	$image = htmlspecialchars($_POST['image']);
+
+	if (filter_var($image, FILTER_VALIDATE_URL) === FALSE){
+		header("location: profileform.php");
+		die();
+	}
 }
 
-if(strlen($_POST['bio'])){
+if(strlen($_POST['bio'])>0){
 	$bio = htmlspecialchars($_POST['bio']);
 }
+
 
 $submittedTalents=array();
 
