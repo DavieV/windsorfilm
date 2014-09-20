@@ -72,3 +72,16 @@ if(!$currentUser->isConfirmed()){
 		</div>
 
 	</body>
+	
+
+	<script>
+
+	function defaultTalents(talents){
+		var talArray=talents.split(",");
+		for(var i=1;i<=talArray.length;i++){
+			$("select[name='talent"+i+"'] option[value='"+talArray[i-1]+"']").attr("selected",true)
+		}
+	}
+
+	defaultTalents("<?php echo implode(',',$currentUser->talents); ?>");
+	</script>
