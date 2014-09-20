@@ -30,6 +30,7 @@ if(isset($_POST['video'])){
 if(isset($_POST['image'])){
 	$image = htmlspecialchars($_POST['image']);
 
+	//this prevents people from adding their own attributes to images, e.x. http://test.com/image ' height=1000
 	if (filter_var($image, FILTER_VALIDATE_URL) === FALSE){
 		header("location: profileform.php");
 		die();

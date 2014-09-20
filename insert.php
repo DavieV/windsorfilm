@@ -26,7 +26,7 @@ if($stmt=$mysqli->prepare("SELECT email FROM test WHERE email = ?")){
 
 $count=strlen($foundEmail) > 0; //becomes true if there is already a registered user with the same email address
 
-if(strcmp($password, $confirmpass) == 0){ //check for proper registration formatting
+if(strcmp($password, $confirmpass) == 0 && filter_var($email, FILTER_VALIDATE_EMAIL)){ //check for proper registration formatting
 	if(!$count){
 
 		if($stmt=$mysqli->prepare("INSERT INTO test (email, firstname, lastname, password, verifycode) VALUES (?, ?, ?, ?, ?)")){
