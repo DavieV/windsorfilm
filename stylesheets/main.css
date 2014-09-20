@@ -40,6 +40,13 @@ span sup {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+.basic {
+  padding-top: 10%;
+  list-style: none;
+}
+.panel {
+  margin-top: 10px;
+}
 .form-signin {
   max-width: 330px;
   padding: 15px;

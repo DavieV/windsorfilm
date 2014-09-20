@@ -87,7 +87,7 @@ searching the database.
         		<h4 class="modal-title" id="myModalLabel">Search the Database</h4>
       		</div>
       		<div class="modal-body">
-				<form class="form-signin" role="form" action="results.php" method="post">
+				<form class="form-signin" role="form" action="results.php" method="get">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 					<input type="text" class="form-control" name="name" placeholder="First Name" required autofocus>
 

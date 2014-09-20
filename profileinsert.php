@@ -49,10 +49,15 @@ if(strlen($_POST['bio'])>0){
 
 $submittedTalents=array();
 
-for($i=1;$i<=$currentUser->numTalents();$i++) //build an array of the submitted talents
-	$submittedTalents[]=$_POST['talent'.$i];  //will be checked against valid talents to prevent value editing
+for($i=1;$i<=$currentUser->numTalents();$i++) 	//build an array of the submitted talents
+	$submittedTalents[]=$_POST['talent'.$i];  	//will be checked against valid talents to prevent value editing
 
-if(!validTalents($submittedTalents)){
+if(!validTalents($submittedTalents)){			//checks if the submitted talents match a list of valid ones
+	header("location: profileform.php");
+	die();
+}
+
+if(!uniqueVals($submittedTalents)){				//checks for any repeats in the submitted talents
 	header("location: profileform.php");
 	die();
 }

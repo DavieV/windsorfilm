@@ -41,6 +41,16 @@ function search($searchName){
 	return $users;
 }
 
+//Checks whether or not an array is composed of completely unique values
+function uniqueVals($submitted){
+	$map = array();
+	foreach($submitted as $key){
+		if(isset($map[$key])) return false;
+		$map[$key] = 1;
+	}
+	return true;
+}
+
 /*
 * Objective: Determine whether or not the submitted talent areas are valid
 * Input: An array containing the submitted talents, as well as an array containing the valid ones

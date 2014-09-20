@@ -34,17 +34,6 @@ if(!$currentUser->isConfirmed()){
 				<!-- dont space this out, it will cause unwanted white space in the text area -->
 				<textarea placeholder="Bio" onKeyDown=<?php echo '"textCounter(this,' . $char . ');"'?> onKeyUp=<?php echo '"textCounter(this,' . "'length'," . $char . ')"'?> name="bio" id="bio" rows="5" cols="34"><?php echo $currentUser->bio; ?></textarea>
 
-				<script>
-				function textCounter(field, cnt, maxlimit) {         
-					var cntfield = document.getElementById(cnt)	
-				     if (field.value.length > maxlimit) // if too long...trim it!
-						field.value = field.value.substring(0, maxlimit);
-						// otherwise, update 'characters left' counter
-						else
-						cntfield.value = maxlimit - field.value.length;
-				}
-				</script>
-
 				<?php if($currentUser->membership > 1): ?>
 
 					<?php if($currentUser->hasImage()): ?>
@@ -72,3 +61,28 @@ if(!$currentUser->isConfirmed()){
 		</div>
 
 	</body>
+</html>
+
+<script>
+//Counts the number of characters that the user entered into the text area and display how many more characters
+//they can enter based on a limit. Deletes any characters that have been added once the limit is exceeded.
+function textCounter(field, cnt, maxlimit) {         
+	var cntfield = document.getElementById(cnt)	
+     if (field.value.length > maxlimit) // if too long...trim it!
+		field.value = field.value.substring(0, maxlimit);
+		// otherwise, update 'characters left' counter
+		else
+		cntfield.value = maxlimit - field.value.length;
+}
+
+//Makes the default values on the dropdowns match the ones that the user's have already selected on 
+//previous uses of the form
+function defaultTalents(talents){
+	var talArray=talents.split(",");
+	for(var i=1;i<=talArray.length;i++){
+		$("select[name='talent"+i+"'] option[value='"+talArray[i-1]+"']").attr("selected",true)
+	}
+}
+
+defaultTalents("<?php echo implode(',',$currentUser->talents); ?>");
+</script>
