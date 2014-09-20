@@ -45,27 +45,40 @@ if(!validTalents($submittedTalents)){
 	die();
 }
 
+$talents=implode(",", $submittedTalents); //if they pass validation, generate the string
+
+
+
+/*
+
+
+Lets try to short this to 1 query if possible
+
+there has to be a nicer way than this
+
+
+*/
 if($membership == 1){
-	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, bio=?, talent1=?, talent2=?, talent3=? WHERE id=?")){
-		$stmt->bind_param("ssssssd", $phone, $businessphone, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_SESSION['id']);
+	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, bio=?, talents=? WHERE id=?")){
+		$stmt->bind_param("ssssd", $phone, $businessphone, $bio, $talents, $_SESSION['id']);
 		$stmt->execute();
 		$stmt->close();
 	}
-	header("location: index.php");
+	header("location: home.php");
 }
 
 else if($membership == 2){
-	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=? WHERE id=?")){
-		$stmt->bind_param("sssssssssd", $phone, $businessphone, $image, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_POST['talent4'], $_POST['talent5'], $_SESSION['id']);
+	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, bio=?, talents=? WHERE id=?")){
+		$stmt->bind_param("sssssd", $phone, $businessphone, $image, $bio, $talents, $_SESSION['id']);
 		$stmt->execute();
 		$stmt->close();
 	}
-	header("location: index.php");
+	header("location: home.php");
 }
 
 else if($membership == 3){
-	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, video=?, bio=?, talent1=?, talent2=?, talent3=?, talent4=?, talent5=?, talent6=?, talent7=? WHERE id=?")){
-		$stmt->bind_param("ssssssssssssd", $phone, $businessphone, $image, $video, $bio, $_POST['talent1'], $_POST['talent2'], $_POST['talent3'], $_POST['talent4'], $_POST['talent5'], $_POST['talent6'], $_POST['talent7'], $_SESSION['id']);
+	if($stmt=$mysqli->prepare("UPDATE test SET phone=?, businessphone=?, image=?, video=?, bio=?,talents=? WHERE id=?")){
+		$stmt->bind_param("ssssssd", $phone, $businessphone, $image, $video, $bio, $talents, $_SESSION['id']);
 		$stmt->execute();
 		$stmt->close();
 	}

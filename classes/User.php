@@ -29,40 +29,21 @@ class User{
 	function User($id){
 		$this->id=$id;
 		$this->getInfo();
-
-		$this->getTalents(); //made this a separate function because the query would be crazy long
 	}
 
 	function getInfo(){
 		global $mysqli;
+		$talentString="";
 
-		if($stmt=$mysqli->prepare("SELECT id,email,confirmed,membership,firstname,lastname,phone,businessphone,image,video,bio FROM test WHERE id=?")){
+		if($stmt=$mysqli->prepare("SELECT id,email,confirmed,membership,firstname,lastname,phone,businessphone,image,video,bio,talents FROM test WHERE id=?")){
 			$stmt->bind_param("d",$this->id);
-			$stmt->bind_result($this->id,$this->email,$this->confirmed,$this->membership,$this->firstname,$this->lastname,$this->phone,$this->bphone,$this->image,$this->video,$this->bio);
+			$stmt->bind_result($this->id,$this->email,$this->confirmed,$this->membership,$this->firstname,$this->lastname,$this->phone,$this->bphone,$this->image,$this->video,$this->bio,$talentString);
 			$stmt->execute();
 			$stmt->fetch();
 			$stmt->close();
 
 			$this->name=$this->firstname." ".$this->lastname;
-		}
-	}
-
-	function getTalents(){
-		global $mysqli;
-
-		if($stmt=$mysqli->prepare("SELECT talent1,talent2,talent3,talent4,talent5,talent6,talent7 FROM test WHERE id=?")){
-			$stmt->bind_param("d",$this->id);
-			$stmt->bind_result($t1,$t2,$t3,$t4,$t5,$t6,$t7);
-			$stmt->execute();
-			$stmt->fetch();
-			$stmt->close();
-
-			$filter=array($t1,$t2,$t3,$t4,$t5,$t6,$t7);
-
-			foreach($filter as $talent){
-				if(strlen($talent)>0)
-					$this->talents[]=$talent;
-			}
+			$this->talents=explode(",",$talentString);
 		}
 	}
 
