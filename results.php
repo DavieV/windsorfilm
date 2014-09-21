@@ -13,9 +13,19 @@
 		include "includes/navbar.php";
 		
 		$name = $_GET['name'];
-		$users = search($name);
+		$talent = $_GET['talent'];
+
+		if(strlen($name)>0)
+			$users=searchName($name);
+		else
+			$users=searchTalent($talent);
+
 		?>
 
+
+		<?php if(count($users)==0): ?>
+			<h2 class="text-center">Sorry, none of our current users match your search query</h2>
+		 <?php endif; ?>
 		<?php foreach($users as $user): ?>
 		<div class="container">
 			<div class="row">

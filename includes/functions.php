@@ -18,14 +18,15 @@ function isLogged(){
 	return isset($_SESSION['id']);
 }
 
-function search($searchName){
+function searchName($query){
+
 	global $mysqli;
 
 	$ids = array();
 	$users=array();
 
 	if($stmt=$mysqli->prepare("SELECT id FROM test WHERE UPPER(firstname) = UPPER(?)")){
-		$stmt->bind_param("s", $searchName);
+		$stmt->bind_param("s", $query);
 		$stmt->bind_result($id);
 		$stmt->execute();
 		while($stmt->fetch()){
@@ -39,6 +40,33 @@ function search($searchName){
 		$users[]=new User($id);
 
 	return $users;
+
+}
+
+function searchTalent($query){
+
+	global $mysqli;
+
+	$ids = array();
+	$users=array();
+
+	if($stmt=$mysqli->prepare("SELECT id FROM test WHERE talents LIKE ?")){
+		$test="%".$query."%";
+		$stmt->bind_param("s",$test);
+		$stmt->bind_result($id);
+		$stmt->execute();
+		while($stmt->fetch()){
+			$ids[]=$id;
+		}
+
+		$stmt->close();
+	}
+
+	foreach($ids as $id)
+		$users[]=new User($id);
+
+	return $users;
+
 }
 
 //Checks whether or not an array is composed of completely unique values

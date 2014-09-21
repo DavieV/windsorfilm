@@ -88,8 +88,17 @@ searching the database.
       		</div>
       		<div class="modal-body">
 				<form class="form-signin" role="form" action="results.php" method="get">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-					<input type="text" class="form-control" name="name" placeholder="First Name" required autofocus>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> Search by name</span>
+					<input type="text" class="form-control" name="name" placeholder="First Name" autofocus>
+					<br /><br />
+					<span class="input-group-addon"><span class="glyphicon glyphicon-bullhorn"></span> Search by talent</span>
+
+					<div align="center">
+						<select name="talent">
+							<?php include 'dropdown.html'; ?>
+						</select>
+					</div>
+					<br /><br />
 
 					<button class="btn btn-large btn-primary btn-block" type="submit">Submit</button>
 				</form>
