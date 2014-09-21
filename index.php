@@ -12,6 +12,10 @@
 		<!--Navigation Bar-->
 		<?php
 		include "includes/navbar.php";
+		if(isset($_SESSION['error'])){
+			showError($_SESSION['error']);
+			unset($_SESSION['error']);
+		}
 		?>
 
 		<!--Main Jumbotron-->

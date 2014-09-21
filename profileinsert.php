@@ -31,7 +31,8 @@ if(isset($_POST['image'])){
 	$image = htmlspecialchars($_POST['image']);
 
 	//this prevents people from adding their own attributes to images, e.x. http://test.com/image ' height=1000
-	if (filter_var($image, FILTER_VALIDATE_URL) === FALSE){
+	if (filter_var($image, FILTER_VALIDATE_URL) === FALSE){	/* Redirect if the user tried to hack the image field */
+		$_SESSION['error'] = "invalidImage";
 		header("location: profileform.php");
 		die();
 	}
@@ -40,7 +41,8 @@ if(isset($_POST['image'])){
 if(strlen($_POST['bio'])>0){
 	$bio = htmlspecialchars($_POST['bio']);
 
-	if(strlen($bio)>$currentUser->bioLength()){
+	if(strlen($bio)>$currentUser->bioLength()){	/* Redirect if the user has entered a bio longer than their allowed length */
+		$_SESSION['error'] = "invalidBio";
 		header("location: profileform.php");
 		die();
 	}
@@ -52,12 +54,14 @@ $submittedTalents=array();
 for($i=1;$i<=$currentUser->numTalents();$i++) 	//build an array of the submitted talents
 	$submittedTalents[]=$_POST['talent'.$i];  	//will be checked against valid talents to prevent value editing
 
-if(!validTalents($submittedTalents)){			//checks if the submitted talents match a list of valid ones
+if(!validTalents($submittedTalents)){			/* Redirect if the user submitted invalid talents */
+	$_SESSION['error'] = "invalidTalents";
 	header("location: profileform.php");
 	die();
 }
 
-if(!uniqueVals($submittedTalents)){				//checks for any repeats in the submitted talents
+if(!uniqueVals($submittedTalents)){				/* Redirect if the user has submitted repeated talents */
+	$_SESSION['error'] = "repeat";
 	header("location: profileform.php");
 	die();
 }
@@ -98,9 +102,6 @@ else if($membership == 3){
 		$stmt->bind_param("ssssssd", $phone, $businessphone, $image, $video, $bio, $talents, $_SESSION['id']);
 		$stmt->execute();
 		$stmt->close();
-	}
-	else{
-		echo $mysqli->error;
 	}
 	header("location: home.php");
 }

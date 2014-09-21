@@ -19,12 +19,11 @@ if($stmt=$mysqli->prepare("SELECT id FROM test WHERE email = ? AND password = ?"
 
 if($id > 0){						/* Check that the returned id is valid */
 	$_SESSION['id'] = $id;
-	$_SESSION['login'] = "valid";	/* Used by login.php for displaying error message */
 	header("location: index.php");
 }
 
 else {
-	$_SESSION['login'] = "invalid";	/* Used by login.php for displaying error messages */
+	$_SESSION['error'] = "invalidLogin";	/* Used by login.php for displaying error messages */
 	header("location: login.php");
 }
 ?>

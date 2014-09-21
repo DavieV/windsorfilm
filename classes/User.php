@@ -87,6 +87,14 @@ class User{
 		echo '<img class="'.$class.'" src="'.$this->image.'" width="'.$width.'" height="'.$height.'">';
 	}
 
+	function showPhone(){
+		echo "(" . substr($this->phone, 0, 3) . ")" . substr($this->phone, 3, 3) . "-" . substr($this->phone, 6);
+	}
+
+	function showBPhone(){
+		echo "(" . substr($this->bphone, 0, 3) . ")" . substr($this->bphone, 3, 3) . "-" . substr($this->bphone, 6);
+	}
+
 }
 
 

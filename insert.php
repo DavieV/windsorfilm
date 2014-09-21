@@ -56,12 +56,12 @@ if(strcmp($password, $confirmpass) == 0 && filter_var($email, FILTER_VALIDATE_EM
 
 	}
 	else {
-		$_SESSION['register'] = "taken";
+		$_SESSION['error'] = "taken";
 		header("location: register.php");
 	}	
 }
 else{
-	$_SESSION['register'] = "invalid";
+	$_SESSION['register'] = "invalidSignup";
 	header("location: register.php");
 }
 

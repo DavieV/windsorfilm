@@ -1,10 +1,18 @@
 <?php 
 include "includes/functions.php";
 
-if(!isset($_SESSION['id'])){
+$currentUser = currentUser();
+
+if(!isset($currentUser->id)){		/* Redirect if the user is not signed in */
+	$_SESSION['error'] = "notLogged";
 	header("location: index.php");
 	die();
-}	
+}
+if($currentUser->isConfirmed()){	/* Redirect if the user has already confirmed their e-mail */
+	$_SESSION['error'] = "confirmed";
+	header("location: index.php");
+	die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,16 +31,9 @@ if(!isset($_SESSION['id'])){
 		?>
 
 		<div class="container">
-			<?php
-			$confirmed = getConfirmed($_SESSION['id']);
-			if(!$confirmed){
-			?>
 			<div class='alert alert-danger col-xs-12 col-md-6 col-md-offset-3 text-center' role='alert'> 
 				Uh Oh! You have not yet confirmed your e-mail address!
 			</div>
-			<?php
-			}
-			?>
 		</div>
 
 		<div class="container">
@@ -45,3 +46,5 @@ if(!isset($_SESSION['id'])){
 				</p>
 			</div>
 		</div>
+	</body>
+</html>

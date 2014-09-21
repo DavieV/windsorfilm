@@ -3,7 +3,12 @@ include "includes/functions.php";
 
 $currentUser=currentUser();
 
-if(!$currentUser->isConfirmed()){
+if(!isset($currentUser->id)){		/* Redirect if the user is not signed in */
+	$_SESSION['error'] = "notLogged";
+	header("location: index.php");
+	die();
+}
+if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed their email address */
 	header("location: reconfirm.php");
 	die();
 }
@@ -15,7 +20,10 @@ if(!$currentUser->isConfirmed()){
 
 	<?php
 	include "includes/signinhead.html";
-
+	if(isset($_SESSION['error'])){
+		showError($_SESSION['error']);
+		unset($_SESSION['error']);
+	}
 	$char=$currentUser->bioLength();
 	?>
 

@@ -1,10 +1,14 @@
-<?php session_start(); ?>
+<?php include "includes/functions.php"; ?>
 <!DOCTYPE html>
 
 <html>
 
 	<?php
 	include "includes/signinhead.html";
+	if(isset($_SESSION['error'])){
+		showError($_SESSION['error']);
+		unset($_SESSION['error']);
+	}
 	?>
 
 	<body>

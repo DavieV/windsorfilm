@@ -34,14 +34,14 @@
 						</div>
 						<ul class="list-group">
 							<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>Email Address:<br /><?php echo $currentUser->email; ?></li>
-							<li class="list-group-item"><span class="glyphicon glyphicon-earphone"></span>Phone Number <br /><?php echo $currentUser->phone; ?></li>
+							<li class="list-group-item"><span class="glyphicon glyphicon-earphone"></span>Phone Number <br /><?php $currentUser->showPhone(); ?></li>
 							
 							<?php if($currentUser->hasBusinessPhone()): ?>
 							<li class="list-group-item"><span class="glyphicon glyphicon-phone-alt"></span>
 								Business Phone: <br />
-								<?php echo $currentUser->bphone; ?>
+								<?php $currentUser->showBPhone(); ?>
 							</li>
-						<?php endif; ?>
+							<?php endif; ?>
 						</ul>
 						<div class="panel-heading">
 							<h3 class="panel-title">Talent Areas</h3>
