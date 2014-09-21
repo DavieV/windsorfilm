@@ -32,7 +32,7 @@ if(isset($_POST['image'])){
 
 	//this prevents people from adding their own attributes to images, e.x. http://test.com/image ' height=1000
 	if (filter_var($image, FILTER_VALIDATE_URL) === FALSE){	/* Redirect if the user tried to hack the image field */
-		$_SESSION['error'] = "invalidImage";
+		$_SESSION['error'] = "Easy there Zark Fuckerberg, stop trying to hack our shit.";
 		header("location: profileform.php");
 		die();
 	}
@@ -42,7 +42,7 @@ if(strlen($_POST['bio'])>0){
 	$bio = htmlspecialchars($_POST['bio']);
 
 	if(strlen($bio)>$currentUser->bioLength()){	/* Redirect if the user has entered a bio longer than their allowed length */
-		$_SESSION['error'] = "invalidBio";
+		$_SESSION['error'] = "So close! It seems you have exceeded the allowed length for your bio.";
 		header("location: profileform.php");
 		die();
 	}
@@ -55,13 +55,13 @@ for($i=1;$i<=$currentUser->numTalents();$i++) 	//build an array of the submitted
 	$submittedTalents[]=$_POST['talent'.$i];  	//will be checked against valid talents to prevent value editing
 
 if(!validTalents($submittedTalents)){			/* Redirect if the user submitted invalid talents */
-	$_SESSION['error'] = "invalidTalents";
+	$_SESSION['error'] = "Nice try bud! That is an invalid talent area";
 	header("location: profileform.php");
 	die();
 }
 
 if(!uniqueVals($submittedTalents)){				/* Redirect if the user has submitted repeated talents */
-	$_SESSION['error'] = "repeat";
+	$_SESSION['error'] = "Oops! You cannot enter two or more of the same talent area";
 	header("location: profileform.php");
 	die();
 }

@@ -13,21 +13,7 @@
 	?>
 
 	<body>
-
-		<div class="container">
-			<div class="row">
-				<?php
-				if($_SESSION['login'] == "invalid"){
-				?>
-					<div class='alert alert-danger col-xs-12 col-md-6 col-md-offset-3' role='alert'>
-						Uh-oh! You have entered an invalid username or password!
-					</div>
-				<?php
-				}
-				?>
-			</div>
-		</div>
-
+	
 		<div class="container">
 			<form class="form-signin" role="form" action="checklogin.php" method="post">
 				<h2 class="form-signin-heading">Please Sign in</h2>

@@ -4,12 +4,12 @@ include "includes/functions.php";
 $currentUser = currentUser();
 
 if(!isset($currentUser->id)){		/* Redirect if the user is not signed in */
-	$_SESSION['error'] = "notLogged";
+	$_SESSION['error'] = "Sorry! You have to be logged in to access this page";
 	header("location: index.php");
 	die();
 }
 if($currentUser->isConfirmed()){	/* Redirect if the user has already confirmed their e-mail */
-	$_SESSION['error'] = "confirmed";
+	$_SESSION['error'] = "You have already confirmed your email address!";
 	header("location: index.php");
 	die();
 }

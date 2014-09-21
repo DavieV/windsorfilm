@@ -99,34 +99,7 @@ function validTalents($submitted){
 
 function showError($error){
 	$alert = "<div class='alert alert-danger col-xs-12 col-md-6 col-md-offset-3 text-center' role='alert'>";
-	if(strcmp($error, "notLogged") == 0){
-		echo $alert . "Sorry! You have to be logged in to access this page</div>";
-	}
-	elseif(strcmp($error, "confirmed") == 0){
-		echo $alert . "You have already confirmed your email address!</div>";
-	}
-	elseif(strcmp($error, "taken") == 0){
-		echo $alert . "We're sorry, this email address is already in use.</div>";
-	}
-	elseif(strcmp($error, "invalidSignup") == 0){
-		echo $alert . "You have entered an invalid email address or passwords did not match.</div>";
-	}
-	elseif(strcmp($error, "invalidLogin") == 0){
-		echo $alert . "Uh-Oh! You have entered an invalid email or password!</div>";
-	}
-	elseif(strcmp($error, "invalidTalents") == 0){
-		echo $alert . "Nice try bud! That is an invalid talent area</div>";
-	}
-	elseif(strcmp($error, "repeat") == 0){
-		echo $alert . "Oops! You cannot enter two or more of the same talent area</div>";
-	}
-	elseif(strcmp($error, "invalidBio") == 0){
-		echo $alert . "So close! It seems you have exceeded the allowed length for your bio.</div>";
-	}
-	elseif(strcmp($error, "invalidImage") == 0){
-		echo $alert . "Easy there Zark Fuckerberg, stop trying to hack our shit.</div>";
-	}
+	echo $alert . $error . "</div>";
 }
-
 
 ?>

@@ -23,7 +23,7 @@ if($id > 0){						/* Check that the returned id is valid */
 }
 
 else {
-	$_SESSION['error'] = "invalidLogin";	/* Used by login.php for displaying error messages */
+	$_SESSION['error'] = "Uh-Oh! You have entered an invalid email or password!";
 	header("location: login.php");
 }
 ?>
