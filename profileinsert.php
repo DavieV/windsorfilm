@@ -32,7 +32,7 @@ if(isset($_POST['image'])){
 
 	//this prevents people from adding their own attributes to images, e.x. http://test.com/image ' height=1000
 	if (filter_var($image, FILTER_VALIDATE_URL) === FALSE){	/* Redirect if the user tried to hack the image field */
-		$_SESSION['error'] = "Easy there Zark Fuckerberg, stop trying to hack our shit.";
+		$_SESSION['error'] = "Invalid URL, (Did you forget to include http://) ?";
 		header("location: profileform.php");
 		die();
 	}

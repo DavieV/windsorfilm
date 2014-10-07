@@ -17,10 +17,11 @@ if($stmt=$mysqli->prepare("SELECT id FROM test WHERE verifycode = ?")){
 	$stmt->close();
 }
 	
-echo $id . "<br />";
 if($id > 0){
 	$mysqli->query("UPDATE test SET confirmed=1 WHERE id=".$id);
 }
 
-//header("location: confirmed.html") redirect user
+$_SESSION['message'] = "Thank you, your email address has been confirmed.";
+
+header("location: index.php")
 ?>

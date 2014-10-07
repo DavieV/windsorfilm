@@ -11,17 +11,18 @@
 		//Navigavtion Bar
 		include "includes/navbar.php";
 		?>
-		<link rel="stylesheet" href="stylesheets/profile.css">
 
 		<div class="jumbotron">
 			<div class="container">
-				<?php if($currentUser->hasImage()): ?>
-					<?php $currentUser->showImage("15%","80%"); ?>
-				<?php endif; ?>
-				<br /><br />
-				<span class="heading">
-					<h1><?php echo $currentUser->name; ?></h1>
-				</span>
+				<div class="row">
+					<?php if($currentUser->hasImage()): ?>
+						<?php $currentUser->showImage("15%","80%"); ?>
+					<?php endif; ?>
+					<br /><br />
+					<span class="heading">
+						<h1><?php echo $currentUser->name; ?></h1>
+					</span>
+				</div>
 			</div>
 		 </div>
 
@@ -48,7 +49,9 @@
 						</div>
 						<ul class="list-group">
 							<?php foreach($currentUser->talents as $talent): ?>
-								<li class='list-group-item'><?php echo $talent; ?></li>
+								<?php if(strcmp($talent, "") != 0): ?>
+									<li class='list-group-item'><?php echo $talent; ?></li>
+								<?php endif; ?>
 							<?php endforeach; ?>
 						</ul>
 					</div>

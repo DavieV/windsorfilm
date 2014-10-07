@@ -73,7 +73,7 @@ function searchTalent($query){
 function uniqueVals($submitted){
 	$map = array();
 	foreach($submitted as $key){
-		if(isset($map[$key])) return false;
+		if(isset($map[$key]) && strcmp($key, "") != 0) return false;
 		$map[$key] = 1;
 	}
 	return true;
@@ -90,7 +90,7 @@ function validTalents($submitted){
 	$jobsArray = explode("\n", $jobString);					/* Separate each job value into an array */
 	
 	foreach($submitted as $talent){
-		if(!in_array($talent, $jobsArray)){
+		if(!in_array($talent, $jobsArray) && strcmp($talent, "") != 0){
 			return false;
 		}
 	}
@@ -100,6 +100,11 @@ function validTalents($submitted){
 function showError($error){
 	$alert = "<div class='alert alert-danger col-xs-12 col-md-6 col-md-offset-3 text-center' role='alert'>";
 	echo $alert . $error . "</div>";
+}
+
+function showMessage($message){
+	$alert = "<div class='alert alert-success col-xs-12 col-md-6 col-md-offset-3 text-center' role='alert'>";
+	echo $alert . $message . "</div>";
 }
 
 ?>

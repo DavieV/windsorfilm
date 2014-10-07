@@ -1,14 +1,12 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
 	padding-top: 50px;
-  	padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 .jumbotron {
-	background-color: #3399ff;
-	/*background-image: url("http://www.blog.jaychan.net/wp-content/uploads/2011/04/Chrono-Trigger-Kingdom-of-Zeal.jpg");*/
-  background-image:url(jumbo.png);
-  background-size: cover;
-	/*background-position: center;*/
+	background-color: #666;
+  background-size: 100% 100%;
+	background-position: center;
 }
 .jumbotron h1 {
 	color: white;
@@ -31,8 +29,39 @@ span sup {
 .navtext {
 	color: white;
 }
-
-.jumbotron img {
+.btn-primary {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.panel-primary {
+  border-color: #ebccd1;
+}
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #ebccd1;
+}
+.panel-primary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ebccd1;
+}
+.panel-primary > .panel-heading .badge {
+  color: #d9534f;
+  background-color: #a94442;
+}
+.panel-primary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ebccd1;
+}
+.jumbotron img #profile {
 	border-radius: 150px;
 }
 

@@ -18,40 +18,26 @@ searching the database.
   			</button>
   			<a class="navbar-brand" href="index.php">Windsor Centre for Film</a>
 		</div>
-		<?php
-		//only display the login form if there isn't a user logged in already
-		if(isset($_SESSION['id'])){
-		?>
-
-		<div class="navbar-collapse collapse">
-			<div class="navbar-right">
-				<span class='navtext'>Welcome <?php echo currentUser()->name; ?>!</span>
-				<a href="home.php"><button class="btn btn-primary">My Profile</button></a>
-				<a href="logout.php"><button class="btn btn-primary">Logout</button></a>
-				<button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
+		<?php if(isset($_SESSION['id'])): ?>
+			<div class="navbar-collapse collapse">
+				<div class="navbar-right">
+					<span class='navtext'>Welcome <?php echo currentUser()->name; ?>!</span>
+					<a href="home.php"><button class="btn btn-primary">My Profile</button></a>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
+					<a href="logout.php"><button class="btn btn-primary">Logout</button></a>
+					<a href="profileform.php"><button class="btn btn-primary">Edit Profile</button></a>
+				</div>
 			</div>
-		</div>
-
-		<?php 
-		}
-		else{
-		?>
-
-		<div class="navbar-collapse collapse">
-			<div class="navbar-right">
-				<button class="btn btn-primary" data-toggle="modal" data-target="#signin">Sign In</button>
-				<button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
-				<?php
-				if(!isset($_SESSION['id'])){				
-				?>
-				<button class="btn btn-primary" data-toggle="modal" data-target="#signup">Sign Up</button>
-				<?php
-				}
-				?>
+		<?php else: ?>
+			<div class="navbar-collapse collapse">
+				<div class="navbar-right">
+					<button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#signin">Sign In</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#signup">Sign Up</button>
+				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 
-		<?php } ?>
 	</div>
 </div>
 
@@ -95,7 +81,7 @@ searching the database.
 
 					<div align="center">
 						<select name="talent">
-							<?php include 'dropdown.html'; ?>
+							<?php include 'searchdropdown.html'; ?>
 						</select>
 					</div>
 					<br /><br />
