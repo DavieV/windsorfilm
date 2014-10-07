@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 	Gets the verify code from the URL which has been e-mailed to the user, and queries
 	the database to find the user with the same code. If query returns a value then the
