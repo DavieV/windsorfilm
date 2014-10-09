@@ -33,7 +33,7 @@ searching the database.
 				<div class="navbar-right">
 					<button class="btn btn-primary" data-toggle="modal" data-target="#search">Search</button>
 					<button class="btn btn-primary" data-toggle="modal" data-target="#signin">Sign In</button>
-					<button class="btn btn-primary" data-toggle="modal" data-target="#signup">Sign Up</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#signup">Register</button>
 				</div>
 			</div>
 		<?php endif; ?>

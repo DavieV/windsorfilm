@@ -15,21 +15,30 @@ $currentUser=currentUser();
 
 $membership = $currentUser->membership;
 
+if($membership == 0 && isset($_GET['t']) && $_GET['t'] >= 1 && $_GET['t'] <= 3){
+	$membership = $_GET['t'];
+	$signup = true;
+}
+elseif($membership == 0) {
+	$_SESSION['error'] = "Unexpected profile submission.";
+	header("location: index.php");
+	die();
+}
+
 //profile image
 //have to strip punctuation from the string
 $phone = htmlspecialchars($_POST['phone']);
+$phone = str_replace(array("-", "." , ",", "(", ")", "[", "]"), "", $phone); //****TODO***** replace with my own function
 
-if(isset($_POST['businessphone'])){
-	$businessphone = htmlspecialchars($_POST['businessphone']);
-}
+$businessphone = htmlspecialchars($_POST['businessphone']);
+$businessphone = str_replace(array("-", "." , ",", "(", ")", "[", "]"), "", $businessphone);
 
 if(isset($_POST['video'])){
 	$video = htmlspecialchars($_POST['video']);
 }
 
-if(isset($_POST['image'])){
+if(strlen($_POST['image']) > 0){
 	$image = htmlspecialchars($_POST['image']);
-
 	//this prevents people from adding their own attributes to images, e.x. http://test.com/image ' height=1000
 	if (filter_var($image, FILTER_VALIDATE_URL) === FALSE){	/* Redirect if the user tried to hack the image field */
 		$_SESSION['error'] = "Invalid URL, (Did you forget to include http://) ?";
@@ -85,7 +94,6 @@ if($membership == 1){
 		$stmt->execute();
 		$stmt->close();
 	}
-	header("location: home.php");
 }
 
 else if($membership == 2){
@@ -94,7 +102,6 @@ else if($membership == 2){
 		$stmt->execute();
 		$stmt->close();
 	}
-	header("location: home.php");
 }
 
 else if($membership == 3){
@@ -103,7 +110,11 @@ else if($membership == 3){
 		$stmt->execute();
 		$stmt->close();
 	}
-	header("location: home.php");
+	
 }
-
+if($signup){
+	header("location: membership.php?t=".$_GET['t']);
+	die();
+}
+header("location: home.php");
 ?>

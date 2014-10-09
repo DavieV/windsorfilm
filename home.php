@@ -12,6 +12,11 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 	header("location: reconfirm.php");
 	die();
 }
+if($currentUser->membership == 0){
+	$_SESSION['error'] = "We're Sorry! You have to sign up for a membership in order to acccess the page.";
+	header("location: index.php");
+	die();
+}
 
 include "includes/userinfo.php";
 ?>

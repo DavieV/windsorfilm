@@ -1,3 +1,5 @@
+
+Accountant
 Accounting Assistant
 Adr Recordist
 Aerial Specialist
@@ -10,6 +12,7 @@ Art Dept Coordinator
 Art Dept Leadman
 Art Dept Swing
 Art Director
+Artist/Designer
 Assistant Director 1st
 Assistant Director 2nd 2nd
 Assistant Director 2nd
@@ -24,6 +27,7 @@ Autocue Operator
 Best Boy
 Boom Operator
 Broadcast Engineer
+Business Planner
 Cable Puller
 Camera Assistant 1st
 Camera Assistant 2nd
@@ -75,6 +79,7 @@ Food Stylist
 Funder-Investment
 Funder-Grants
 Funder-Government
+Fundraiser
 Gaffer
 Government-Municipal
 Government-Provincial
@@ -85,8 +90,10 @@ Graphics Operator
 Grip
 Hair Stylist
 Intern
+Investor
 Jimmy Jib Operator
 Key Grip
+Lawyer
 Lighting Design
 Lighting Supervisor
 Lighting Technical Director

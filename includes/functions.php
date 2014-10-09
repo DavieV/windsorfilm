@@ -25,7 +25,7 @@ function searchName($query){
 	$ids = array();
 	$users=array();
 
-	if($stmt=$mysqli->prepare("SELECT id FROM test WHERE UPPER(firstname) = UPPER(?)")){
+	if($stmt=$mysqli->prepare("SELECT id FROM test WHERE UPPER(firstname) = UPPER(?) AND membership > 0")){
 		$stmt->bind_param("s", $query);
 		$stmt->bind_result($id);
 		$stmt->execute();
@@ -50,7 +50,7 @@ function searchTalent($query){
 	$ids = array();
 	$users=array();
 
-	if($stmt=$mysqli->prepare("SELECT id FROM test WHERE talents LIKE ?")){
+	if($stmt=$mysqli->prepare("SELECT id FROM test WHERE talents LIKE ? AND membership > 0")){
 		$test="%".$query."%";
 		$stmt->bind_param("s",$test);
 		$stmt->bind_result($id);

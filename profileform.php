@@ -12,6 +12,12 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 	header("location: reconfirm.php");
 	die();
 }
+if($currentUser->membership == 0){
+	$_SESSION['error'] = "You have to sign up for a membership to create your user profile.";
+	echo "NIK";
+	//header("location: index.php");
+	die();
+}
 ?>
 
 <!DOCTYPE html>

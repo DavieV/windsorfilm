@@ -19,7 +19,7 @@
 	}
 
 	$subject = "Confirm your e-mail address";
-	$msg = "To confirm your e-mail address please click the following link:\nhttp://windsorfilmmaking.com/testing/confirm.php?h=" . $verifycode;
+	$msg = "To confirm your e-mail address please click the following link:\nhttp://windsorfilmmaking.com/talentdb/confirm.php?h=" . $verifycode;
 	$headers = "From: administator@windsorfilmmaking.com";
 
 	mail($email, $subject, $msg, $headers);
