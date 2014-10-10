@@ -10,6 +10,9 @@ body {
 #bold {
   font-weight: bold;
 }
+#red {
+  color: red;
+}
 .jumbotron h1 {
 	color: white;
 }

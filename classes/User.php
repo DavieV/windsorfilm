@@ -19,6 +19,9 @@ class User{
 	public $name="";
 	public $phone="";
 	public $bphone="";
+	public $city="";
+	public $company="";
+	public $website="";
 	public $image="";
 	public $video="";
 	public $bio="";
@@ -35,9 +38,10 @@ class User{
 		global $mysqli;
 		$talentString="";
 
-		if($stmt=$mysqli->prepare("SELECT id,email,confirmed,membership,firstname,lastname,phone,businessphone,image,video,bio,talents FROM test WHERE id=?")){
+		if($stmt=$mysqli->prepare("SELECT id,email,confirmed,membership,firstname,lastname,phone,businessphone,city,company,website,image,video,bio,talents FROM test WHERE id=?")){
 			$stmt->bind_param("d",$this->id);
-			$stmt->bind_result($this->id,$this->email,$this->confirmed,$this->membership,$this->firstname,$this->lastname,$this->phone,$this->bphone,$this->image,$this->video,$this->bio,$talentString);
+			$stmt->bind_result($this->id,$this->email,$this->confirmed,$this->membership,$this->firstname,$this->lastname,$this->phone,
+				$this->bphone,$this->city,$this->company,$this->website,$this->image,$this->video,$this->bio,$talentString);
 			$stmt->execute();
 			$stmt->fetch();
 			$stmt->close();
@@ -78,7 +82,7 @@ class User{
 	function numTalents(){
 		if($this->membership==1) return 3;
 		if($this->membership==2) return 5;
-		if($this->membership==3) return 7;
+		if($this->membership==3) return 10;
 
 		return 0;
 	}

@@ -14,8 +14,7 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 }
 if($currentUser->membership == 0){
 	$_SESSION['error'] = "You have to sign up for a membership to create your user profile.";
-	echo "NIK";
-	//header("location: index.php");
+	header("location: index.php");
 	die();
 }
 ?>
@@ -41,6 +40,9 @@ if($currentUser->membership == 0){
 
 				<input type="tel" class="form-control" name="phone" placeholder="Phone Number" value="<?php echo $currentUser->phone; ?>" required>
 				<input type="tel" class="form-control" name="businessphone" placeholder="Business Phone Number" value="<?php echo $currentUser->bphone; ?>"><br>
+				<input class="form-control" name="city" placeholder="City" value="<?php echo $currentUser->city; ?>"><br>
+				<input class="form-control" name="company" placeholder="Company Name" value="<?php echo $currentUser->company; ?>"><br>
+				<input class="form-control" name="website" placeholder="Website" value="<?php echo $currentUser->website; ?>"><br>
 				<br /><br />
 
 				Input a short bio, <input readonly type="text" id='length' name="length" size="4" maxlength="4" value=<?php echo "'" . $char . "'"?>> characters left<br/>

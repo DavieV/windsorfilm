@@ -49,6 +49,9 @@ else{
 
 				<input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
 				<input type="tel" class="form-control" name="businessphone" placeholder="Business Phone Number"><br>
+				<input class="form-control" name="city" placeholder="City"><br>
+				<input class="form-control" name="company" placeholder="Company Name"><br>
+				<input class="form-control" name="website" placeholder="Website"><br>
 				<br /><br />
 
 				Input a short bio, <input readonly type="text" id='length' name="length" size="4" maxlength="4" value=<?php echo "'" . $char . "'"?>> characters left<br/>
@@ -60,14 +63,28 @@ else{
 					<input type='text' class='form-control' name='image' placeholder='Image URL'><br>
 				<?php endif; ?>
 
-				<?php
-				//These if statements check the membership level of the user, and display the appropriate amount of selects
-				for($i = 1; $i <= (2 * $type) + 1; $i++): ?>
-					Talent Area # <?php echo $i; ?>
-					<select name='talent<?php echo $i; ?>'>
-					<?php include "includes/dropdown.html"; ?>
-					</select><br><br>
-				<?php endfor; ?>
+				<?php if($type == 1): ?>
+					<?php for($i = 1; $i <= 3; $i++): ?>
+						Talent Area # <?php echo $i; ?>
+						<select name='talent<?php echo $i; ?>'>
+						<?php include "includes/dropdown.html"; ?>
+						</select><br><br>
+					<?php endfor; ?>
+				<?php elseif($type == 2): ?>
+					<?php for($i = 1; $i <= 5; $i++): ?>
+						Talent Area # <?php echo $i; ?>
+						<select name='talent<?php echo $i; ?>'>
+						<?php include "includes/dropdown.html"; ?>
+						</select><br><br>
+					<?php endfor; ?>
+				<?php elseif($type == 3): ?>
+					<?php for($i = 1; $i <= 10; $i++): ?>
+						Talent Area # <?php echo $i; ?>
+						<select name='talent<?php echo $i; ?>'>
+						<?php include "includes/dropdown.html"; ?>
+						</select><br><br>
+					<?php endfor; ?>
+				<?php endif ?>
 
 				<?php if($type == 3): ?>
 				<input type='text' class='form-control' name='video' placeholder='Youtube Video Address' value="<?php echo $currentUser->video; ?>">

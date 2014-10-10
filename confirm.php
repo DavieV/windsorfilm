@@ -20,6 +20,7 @@ if($stmt=$mysqli->prepare("SELECT id FROM test WHERE verifycode = ?")){
 	
 if($id > 0){
 	$mysqli->query("UPDATE test SET confirmed=1 WHERE id=".$id);
+	$_SESSION['id'] = $id;
 }
 
 $_SESSION['message'] = "Thank you, your email address has been confirmed.";

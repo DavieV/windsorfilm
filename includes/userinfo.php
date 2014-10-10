@@ -36,7 +36,9 @@
 						<ul class="list-group">
 							<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>Email Address:<br /><?php echo $currentUser->email; ?></li>
 							<li class="list-group-item"><span class="glyphicon glyphicon-earphone"></span>Phone Number <br /><?php $currentUser->showPhone(); ?></li>
-							
+							<li class="list-group-item">City: <br><?php echo $currentUser->city; ?></li>
+							<li class="list-group-item">Company Name: <br><?php echo $currentUser->company; ?></li>
+							<li class="list-group-item">Website: <br><a href="http://<?php echo $currentUser->website; ?>"><?php echo $currentUser->website; ?></a></li>
 							<?php if($currentUser->hasBusinessPhone()): ?>
 							<li class="list-group-item"><span class="glyphicon glyphicon-phone-alt"></span>
 								Business Phone: <br />

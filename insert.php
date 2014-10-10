@@ -51,6 +51,7 @@ if(strcmp($password, $confirmpass) == 0 && filter_var($email, FILTER_VALIDATE_EM
 			$headers = "From: administator@windsorfilmmaking.com";
 
 			mail($email, $subject, $msg, $headers);
+			$_SESSION['message'] = "Thank you for registering! You should receive a email to confirm your email address shortly.";
 			header("location: index.php");
 		}
 

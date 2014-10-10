@@ -47,7 +47,7 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 
 		<div class="container">
 			<p>
-				Please note that it may take up to 48 hours for your membership status to update in order for you to fill out your profile information. An email will be sent to your registered address to notify you of this update.
+				Please note that it may take up to 48 hours for your membership status to post to the website. An email will be sent to your registered address to notify you of this update.
 			</p>
 		</div>
 
@@ -66,7 +66,8 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
 							<li class="list-group-item features">Contact Info</li>
 							<li class="list-group-item features">3 Talent Areas</li>
-							<li class="list-group-item features">100 Word Bio</li>
+							<li class="list-group-item features">500 character Bio (estimated 100 words)</li>
+							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
 							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
 						</ul>
 					</div>
@@ -85,7 +86,8 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 							<li class="list-group-item features">Photo</li>
 							<li class="list-group-item features">Contact Info</li>
 							<li class="list-group-item features">5 Talent Areas</li>
-							<li class="list-group-item features">300 Word Bio</li>
+							<li class="list-group-item features">1500 character Bio (estimated 300 words)</li>
+							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
 							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
 						</ul>
 					</div>
@@ -103,9 +105,10 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 							<li class="list-group-item features">Name</li>
 							<li class="list-group-item features">Photo</li>
 							<li class="list-group-item features">Contact Info</li>
-							<li class="list-group-item features">7 Talent Areas</li>
-							<li class="list-group-item features">600 Word Bio</li>
+							<li class="list-group-item features">10 Talent Areas</li>
+							<li class="list-group-item features">3000 character bio (estimated 600 words)</li>
 							<li class="list-group-item features">3 Minute Video</li>
+							<li class="list-group-item features">Raindance International Membership</li>
 						</ul>
 					</div>
 				</div>
