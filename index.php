@@ -80,7 +80,7 @@ $currentUser = currentUser();
 							<li class="list-group-item features">500 character Bio (estimated 100 words)</li>
 							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
 							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
-							<li class="list-group-item features"><a href="signup.php?t=1" target="blank"><button class="btn btn-primary">Sign up!</button></a>
+							<li class="list-group-item features"><a href="signup.php?t=1" target="blank"><button class="btn btn-primary">Sign up!</button></a></li>
 						</ul>
 					</div>
 				</div>
@@ -101,7 +101,7 @@ $currentUser = currentUser();
 							<li class="list-group-item features">1500 character Bio (estimated 300 words)</li>
 							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
 							<li class="list-group-item features"><span class="glyphicon glyphicon-remove"></span></li>
-							<li class="list-group-item features"><a href="signup.php?t=2" target="blank"><button class="btn btn-primary">Sign up!</button></a>
+							<li class="list-group-item features"><a href="signup.php?t=2" target="blank"><button class="btn btn-primary">Sign up!</button></a></li>
 						</ul>
 					</div>
 				</div>
@@ -121,8 +121,8 @@ $currentUser = currentUser();
 							<li class="list-group-item features">10 Talent Areas</li>
 							<li class="list-group-item features">3000 character Bio (estimated 600 words)</li>
 							<li class="list-group-item features">3 Minute Video</li>
-							<li class="list-group-item features"><a href="http://raindance.org/premium">Raindance International Premium Membership</a></li>
-							<li class="list-group-item features"><a href="signup.php?t=3" target="blank"><button class="btn btn-primary">Sign up!</button></a>
+							<li class="list-group-item features"><a data-toggle="modal" href="#raindance">Raindance International Premium Membership</a></li>
+							<li class="list-group-item features"><a href="signup.php?t=3" target="blank"><button class="btn btn-primary">Sign up!</button></a></li>
 						</ul>
 					</div>
 				</div>
@@ -154,6 +154,29 @@ $currentUser = currentUser();
 	      				4) Once your profile form is filled in, you can "Submit" to save and also pay by PayPal or Credit Card.<br><br>
 						5) That's it!  You can see how your profile will appear to others by clicking the "My Profile" button at the top of the page.
 					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="raindance" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        		<h4 class="modal-title" id="myModalLabel"><a href="https://www.raindance.org/premium/get-premium/?s2-ssl=yes ">Raindance International Premium Membership</a></h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			<p>
+	      				Raindance International Premium Membership is included with the Premium Database Membership at no extra cost.<br><br>It includes:<br><br>
+	      				<ul class="list-group">
+	      					<li class="list-group-item">Free script registration</li>
+	      					<li class="list-group-item">15% DISCOUNT on all courses</li>
+	      					<li class="list-group-item">Access to all Raindance onlince courses and filmmaker resources</li>
+	      					<li class="list-group-item">Access to legal contracts and documents</li>
+	      					<li class="list-group-item">Free/discounted access to Raindance &amp; BIFA events</li>
+	      				</ul>
+	      			</p>
 				</div>
 			</div>
 		</div>

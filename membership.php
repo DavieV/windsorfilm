@@ -108,7 +108,7 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 							<li class="list-group-item features">10 Talent Areas</li>
 							<li class="list-group-item features">3000 character bio (estimated 600 words)</li>
 							<li class="list-group-item features">3 Minute Video</li>
-							<li class="list-group-item features">Raindance International Membership</li>
+							<li class="list-group-item features"><a data-toggle="modal" href="#raindance">Raindance International Membership</a></li>
 						</ul>
 					</div>
 				</div>
@@ -116,4 +116,28 @@ if(!$currentUser->isConfirmed()){		/* Redirect if the user has not confirmed the
 		</div>
 
 	</body>
+
+	<div class="modal fade" id="raindance" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        		<h4 class="modal-title" id="myModalLabel"><a href="https://www.raindance.org/premium/get-premium/?s2-ssl=yes">Raindance International Premium Membership</a></h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			<p>
+	      				Raindance International Premium Membership is included with the Premium Database Membership at no extra cost.<br><br>It includes:<br><br>
+	      				<ul class="list-group">
+	      					<li class="list-group-item">Free script registration</li>
+	      					<li class="list-group-item">15% DISCOUNT on all courses</li>
+	      					<li class="list-group-item">Access to all Raindance onlince courses and filmmaker resources</li>
+	      					<li class="list-group-item">Access to legal contracts and documents</li>
+	      					<li class="list-group-item">Free/discounted access to Raindance &amp; BIFA events</li>
+	      				</ul>
+	      			</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </html>
